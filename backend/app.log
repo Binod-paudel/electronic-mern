@@ -1,0 +1,10 @@
+[2025-4-29T6:39:47]::POST /api/v4/users/signup ::1 500 28ms
+[2025-4-29T6:41:14]::POST /api/v4/users/signup ::1 400 26ms
+[2025-4-29T6:41:36]::POST /api/v4/users/signup ::1 500 387ms
+[2025-4-29T6:43:39]::POST /api/v4/users/signup ::1 400 21ms
+[2025-4-29T6:43:48]::POST /api/v4/users/signup ::1 200 375ms
+[2025-4-29T6:47:11]::POST /api/v4/users/signup ::1 200 146ms
+[2025-4-29T7:6:30]::POST /api/v4/users/login ::1 404 18ms
+[2025-4-29T7:7:20]::POST /api/v4/users/login ::1 500 32ms
+[2025-4-29T7:7:50]::POST /api/v4/users/login ::1 200 178ms
+[2025-4-29T7:11:3]::POST /api/v4/users/logout ::1 200 15ms
