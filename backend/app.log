@@ -24,3 +24,9 @@
 [2025-5-6T11:2:29]::POST /api/v4/users/logout ::1 200 8ms
 [2025-5-6T11:2:55]::POST /api/v4/users/login ::1 200 112ms
 [2025-5-6T11:18:53]::PUT /api/v4/users/ ::1 404 49ms
+[2025-5-8T11:25:3]::POST /api/v4/users/login ::1 200 650ms
+[2025-5-8T11:29:6]::GET /api/v4/products ::1 200 32ms
+[2025-5-8T11:29:13]::POST /api/v4/products ::1 500 85ms
+[2025-5-8T11:29:45]::POST /api/v4/products ::1 200 41ms
+[2025-5-8T11:29:58]::POST /api/v4/products ::1 200 34ms
+[2025-5-8T11:31:22]::GET /api/v4/products ::1 200 19ms
