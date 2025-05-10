@@ -44,7 +44,7 @@ const addProduct = asyncHandler(async (req, res) => {
 //@access private/admin
 const updateProduct = asyncHandler(async (req, res) => {
   let id = req.params.id;
-  let product = await findById(id);
+  let product = await Product.findById(id);
   if (!product) {
     throw new ApiError(404, "Product not found!");
   }
@@ -96,8 +96,28 @@ const addUserReviews = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Product not Found!");
   }
   let alreadyReviewed = product.reviews.find(
-    (r = r.user.toString() === req.user._id.toString())
+    (r) => r.user.toString() === req.user._id.toString()
   );
+  if (alreadyReviewed) {
+    throw new ApiError(400, "Already reviewed!");
+  }
+  let { rating, comment } = req.body;
+  product.reviews.push({
+    name: req.user.name,
+    rating,
+    comment,
+    user: req.user._id,
+  });
+  product.numReviews = product.reviews.length;
+  let totalRating = product.reviews.reduce(
+    (acc, review) => acc + review.rating,
+    0
+  );
+  product.rating = (totalRating/product.reviews.length).toFixed(2);
+  await product.save();
+
+  res.send({ message: "Review added successfully!" });
+
 });
 
 export {
@@ -107,4 +127,5 @@ export {
   updateProduct,
   deleteProduct,
   getTopProducts,
+  addUserReviews
 };
