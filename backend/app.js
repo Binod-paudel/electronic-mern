@@ -9,6 +9,7 @@ import path from "path";
 //routers import
 import userRouter from "./routes/user.route.js";
 import productRouter from "./routes/product.route.js"
+import orderRouter from "./routes/order.route.js"
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(logger);
 //routes
 app.use("/api/v4/users", userRouter);
 app.use("/api/v4/products", productRouter);
+app.use("/api/v4/orders", orderRouter);
 
 // errorHandler
 app.use(notFoundHandler);
