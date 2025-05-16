@@ -51,4 +51,19 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.send(orders);
 });
 
-export { addOrder, getOrdes, getOrderById , getMyOrders};
+const updateOrderStatus = asyncHandler(async (req, res) => {
+  let id = req.params.id;
+  let status = req.body.status;
+  let order = await Order.findById(id);
+  if (!order) throw new ApiError(404, "Order not Found!");
+  order.status = status;
+  if (status == "delivered") {
+    order.isDelivered = true;
+    order.isPaid = true;
+    order.deliveredAt = Date.now();
+  }
+  order.save();
+  res.send({ message: "Order status changed to " + order.status });
+});
+
+export { addOrder, getOrdes, getOrderById, getMyOrders, updateOrderStatus };
